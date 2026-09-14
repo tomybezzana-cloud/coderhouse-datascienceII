@@ -2,19 +2,12 @@
 
 Repositorio de prácticas del curso de Data Science II (Coderhouse).
 
-## Práctica: Repaso de Python básico
+Cada práctica vive en su propia carpeta, numerada en el orden en que se fue
+cursando, con su propio README explicando el ejercicio y cómo ejecutarlo.
 
-Archivo: [`practica_python.py`](practica_python.py)
+## Prácticas
 
-Ejercicio de repaso de fundamentos de Python (previo a Pandas/Scikit-Learn), que cubre:
-
-1. **Variables y tipos de datos**: uso de `str`, `float`, `int` y `bool`, e impresión con f-strings.
-2. **Lógica de negocio**: recorrido de una lista de precios con `for` y clasificación con `if/else` ("Caro" vs "Económico").
-3. **Estructuras de datos**: manejo de un diccionario (`almacen`) para representar stock por producto (agregar y consultar valores).
-4. **Funciones**: una función `resumen_estadistico` que recibe una lista de números y devuelve un diccionario con la suma, el promedio y la cantidad de elementos.
-
-### Cómo ejecutarlo
-
-```bash
-python practica_python.py
-```
+| # | Tema | Carpeta |
+|---|------|---------|
+| 1 | Repaso de Python básico (variables, tipos, listas, diccionarios, funciones) | [`01-repaso-python-basico/`](01-repaso-python-basico/) |
+| 2 | Análisis SQL sobre una tabla de ventas (SELECT, WHERE, NULL, GROUP BY, HAVING) | [`02-sql-analisis-ventas/`](02-sql-analisis-ventas/) |
