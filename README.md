@@ -13,3 +13,4 @@ cursando, con su propio README explicando el ejercicio y cómo ejecutarlo.
 | 2 | Análisis SQL sobre una tabla de ventas (SELECT, WHERE, NULL, GROUP BY, HAVING) | [`02-sql-analisis-ventas/`](02-sql-analisis-ventas/) |
 | 3 | Diseño de base de datos para una plataforma de cursos online (diagrama ER + conversión a tablas) | [`03-diseno-bd-cursos/`](03-diseno-bd-cursos/) |
 | 4 | Diseño de un sistema de adquisición de datos (DAQ) para un sensor de vibración en aerogeneradores | [`04-diseno-adquisicion-datos/`](04-diseno-adquisicion-datos/) |
+| 5 | DML: crear, consultar, actualizar y eliminar datos (SELECT, INSERT, UPDATE, DELETE) sobre una tabla de vendedores | [`05-dml-vendedores/`](05-dml-vendedores/) |
