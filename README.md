@@ -16,3 +16,4 @@ cursando, con su propio README explicando el ejercicio y cómo ejecutarlo.
 | 5 | DML: crear, consultar, actualizar y eliminar datos (SELECT, INSERT, UPDATE, DELETE) sobre una tabla de vendedores | [`05-dml-vendedores/`](05-dml-vendedores/) |
 | 6 | Pre-entrega 1: diseño de base de datos para una biblioteca universitaria (ERD + normalización 3FN) | [`06-diseno-bd-biblioteca/`](06-diseno-bd-biblioteca/) |
 | 7 | TCL: transacciones seguras y ACID (BEGIN, COMMIT, ROLLBACK) sobre una tabla de productos | [`07-tcl-transacciones-productos/`](07-tcl-transacciones-productos/) |
+| 8 | Pre-entrega 2: adquisición y normalización con pandas (merge CSV + Excel, limpieza, export a Parquet) | [`08-adquisicion-normalizacion-pandas/`](08-adquisicion-normalizacion-pandas/) |
