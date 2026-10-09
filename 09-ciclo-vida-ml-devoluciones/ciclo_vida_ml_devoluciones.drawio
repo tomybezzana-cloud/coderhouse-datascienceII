@@ -1,0 +1,143 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Ciclo de vida ML" id="ciclo-ml">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1560" pageHeight="1080">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c2" value="&lt;b style='font-size:24px'&gt;Ciclo de vida de ML: predicción de devoluciones en e-commerce&lt;/b&gt;&lt;br&gt;&lt;span style='font-size:13px;color:#5a6b7a'&gt;Contexto: el 15% de los productos vendidos se devuelve. Objetivo: alertar a soporte antes del envío.&lt;/span&gt;" style="html=1;whiteSpace=wrap;text;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="60" y="12" width="1440" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" value="&lt;b style='font-size:15px;color:#9c640c'&gt;Tipo de problema: CLASIFICACIÓN BINARIA (¿se devuelve? sí / no)&lt;/b&gt;&lt;br&gt;Es clasificación y no regresión porque la salida es una categoría (devuelto / no devuelto), no un número continuo. El modelo estima la probabilidad de devolución y un umbral decide si se envía la alerta." style="html=1;whiteSpace=wrap;rounded=1;arcSize=10;align=left;verticalAlign=middle;spacingLeft=14;fillColor=#fef5e7;strokeColor=#d68910;strokeWidth=2;fontSize=12;fontColor=#1b2733;" vertex="1" parent="1">
+          <mxGeometry x="60" y="84" width="1440" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" value="&lt;b style='color:#5b6abf'&gt;Pregunta de negocio&lt;/b&gt;&lt;br&gt;• ¿Este pedido va a ser devuelto? Se responde ANTES del envío.&lt;br&gt;&lt;b style='color:#5b6abf'&gt;Variable objetivo (target)&lt;/b&gt;&lt;br&gt;• devuelto = 1 si el cliente devuelve el pedido dentro de los 30 días; devuelto = 0 si no.&lt;br&gt;&lt;b style='color:#5b6abf'&gt;Tipo de tarea: CLASIFICACIÓN BINARIA&lt;/b&gt;&lt;br&gt;&lt;b style='color:#5b6abf'&gt;Objetivo de negocio medible&lt;/b&gt;&lt;br&gt;• Bajar la tasa de devolución del 15% al 12% en 6 meses.&lt;br&gt;&lt;b style='color:#5b6abf'&gt;Acción que dispara el modelo&lt;/b&gt;&lt;br&gt;• Alerta a soporte para contactar al cliente antes de despachar (confirmar talle, color, dirección)." style="html=1;whiteSpace=wrap;rounded=1;arcSize=4;align=left;verticalAlign=top;spacingLeft=10;spacingRight=8;spacingTop=42.0;fillColor=#ffffff;strokeColor=#5b6abf;strokeWidth=2;fontSize=12;fontColor=#1b2733;" vertex="1" parent="1">
+          <mxGeometry x="60" y="180" width="432" height="324" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" value="&lt;b&gt;1. DEFINICIÓN DEL PROBLEMA&lt;/b&gt;" style="html=1;whiteSpace=wrap;rounded=0;align=left;verticalAlign=middle;spacingLeft=10;fillColor=#5b6abf;strokeColor=#5b6abf;fontColor=#ffffff;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="180" width="432" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c6" value="• pedidos: fecha, monto, % descuento, medio de pago, canal&lt;br&gt;• detalle_pedido: productos, talles, cantidades por pedido&lt;br&gt;• usuarios: antigüedad, nº de compras previas, zona&lt;br&gt;• productos: categoría, precio, marca, guía de talles&lt;br&gt;• devoluciones: historial y motivo → genera la etiqueta&lt;br&gt;• envios: zona de destino, transportista, plazo prometido&lt;br&gt;• resenas: calificaciones y quejas del producto&lt;br&gt;&lt;b style='color:#2e86c1'&gt;Regla anti-fuga (data leakage)&lt;/b&gt;&lt;br&gt;• Solo se usan datos que existen ANTES de despachar. Ej.: el 'motivo de devolución' NO puede ser una feature." style="html=1;whiteSpace=wrap;rounded=1;arcSize=4;align=left;verticalAlign=top;spacingLeft=10;spacingRight=8;spacingTop=42.0;fillColor=#ffffff;strokeColor=#2e86c1;strokeWidth=2;fontSize=12;fontColor=#1b2733;" vertex="1" parent="1">
+          <mxGeometry x="564" y="180" width="432" height="324" as="geometry" />
+        </mxCell>
+        <mxCell id="c7" value="&lt;b&gt;2. ADQUISICIÓN DE DATOS (SQL)&lt;/b&gt;" style="html=1;whiteSpace=wrap;rounded=0;align=left;verticalAlign=middle;spacingLeft=10;fillColor=#2e86c1;strokeColor=#2e86c1;fontColor=#ffffff;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="564" y="180" width="432" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c8" value="• Limpieza: nulos, duplicados, tipos de dato, outliers.&lt;br&gt;• Features: % de devolución del cliente y del producto, mismo producto en varios talles, 1ª compra, % descuento.&lt;br&gt;• Clase desbalanceada (15% devueltos): verificar que Train y Test mantengan esa proporción; usar class_weight.&lt;br&gt;&lt;b style='color:#17a589'&gt;División de datos: corte TEMPORAL (12 meses)&lt;/b&gt;&lt;br&gt;• Se entrena con el pasado y se prueba con el 'futuro', igual que en producción. El Test se aparta y no se toca." style="html=1;whiteSpace=wrap;rounded=1;arcSize=4;align=left;verticalAlign=top;spacingLeft=10;spacingRight=8;spacingTop=42.0;fillColor=#ffffff;strokeColor=#17a589;strokeWidth=2;fontSize=12;fontColor=#1b2733;" vertex="1" parent="1">
+          <mxGeometry x="1068" y="180" width="432" height="324" as="geometry" />
+        </mxCell>
+        <mxCell id="c9" value="&lt;b&gt;3. PREPARACIÓN DE DATOS&lt;/b&gt;" style="html=1;whiteSpace=wrap;rounded=0;align=left;verticalAlign=middle;spacingLeft=10;fillColor=#17a589;strokeColor=#17a589;fontColor=#ffffff;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1068" y="180" width="432" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c10" value="&lt;b&gt;TRAIN 80% · ene–sep&lt;/b&gt;&lt;br&gt;entrenar + validación cruzada" style="html=1;whiteSpace=wrap;align=center;fillColor=#d1f2eb;strokeColor=#17a589;fontColor=#0e6655;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1086" y="441" width="317" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="c11" value="&lt;b&gt;TEST 20%&lt;br&gt;oct–dic&lt;/b&gt;" style="html=1;whiteSpace=wrap;align=center;fillColor=#fadbd8;strokeColor=#c0392b;fontColor=#922b21;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1403" y="441" width="79" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="c12" value="&lt;b style='color:#d68910'&gt;Empezar por un baseline&lt;/b&gt;&lt;br&gt;• Baseline 1: 'nadie devuelve' → 85% de accuracy pero 0% de devoluciones detectadas. Muestra el piso a superar.&lt;br&gt;• Baseline 2: regla simple: alertar si el cliente ya devolvió 2 o más pedidos.&lt;br&gt;&lt;b style='color:#d68910'&gt;Iterar hacia la complejidad&lt;/b&gt;&lt;br&gt;• Regresión logística → árbol de decisión → random forest / gradient boosting.&lt;br&gt;• Hiperparámetros con validación cruzada SOLO sobre Train.&lt;br&gt;• El modelo devuelve una probabilidad; el umbral de alerta se elige en la evaluación." style="html=1;whiteSpace=wrap;rounded=1;arcSize=4;align=left;verticalAlign=top;spacingLeft=10;spacingRight=8;spacingTop=42.0;fillColor=#ffffff;strokeColor=#d68910;strokeWidth=2;fontSize=12;fontColor=#1b2733;" vertex="1" parent="1">
+          <mxGeometry x="1068" y="636" width="432" height="324" as="geometry" />
+        </mxCell>
+        <mxCell id="c13" value="&lt;b&gt;4. MODELADO&lt;/b&gt;" style="html=1;whiteSpace=wrap;rounded=0;align=left;verticalAlign=middle;spacingLeft=10;fillColor=#d68910;strokeColor=#d68910;fontColor=#ffffff;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1068" y="636" width="432" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c14" value="&lt;b style='color:#c0392b'&gt;Prioridad: atrapar devolutores, sin saturar a soporte&lt;/b&gt;&lt;br&gt;• Un falso negativo cuesta un envío de ida y vuelta.&lt;br&gt;• Un falso positivo cuesta un mensaje amable al cliente. → Se prioriza RECALL, con un piso de PRECISIÓN.&lt;br&gt;&lt;b style='color:#c0392b'&gt;Métrica de éxito&lt;/b&gt;&lt;br&gt;• Detectar ≥ 75% de las devoluciones (recall)&lt;br&gt;• con precisión ≥ 40%: de cada 10 alertas, al menos 4 son devoluciones reales (al azar serían 1,5).&lt;br&gt;• Accuracy NO sirve: el baseline ya da 85%.&lt;br&gt;&lt;b style='color:#c0392b'&gt;Validación de negocio&lt;/b&gt;&lt;br&gt;• Ahorro logístico estimado &amp;gt; costo de contactar clientes." style="html=1;whiteSpace=wrap;rounded=1;arcSize=4;align=left;verticalAlign=top;spacingLeft=10;spacingRight=8;spacingTop=42.0;fillColor=#ffffff;strokeColor=#c0392b;strokeWidth=2;fontSize=12;fontColor=#1b2733;" vertex="1" parent="1">
+          <mxGeometry x="564" y="636" width="432" height="324" as="geometry" />
+        </mxCell>
+        <mxCell id="c15" value="&lt;b&gt;5. EVALUACIÓN (sobre el Test Set, una sola vez)&lt;/b&gt;" style="html=1;whiteSpace=wrap;rounded=0;align=left;verticalAlign=middle;spacingLeft=10;fillColor=#c0392b;strokeColor=#c0392b;fontColor=#ffffff;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="564" y="636" width="432" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c16" value="&lt;b style='color:#7d3c98'&gt;Despliegue&lt;/b&gt;&lt;br&gt;• Se ejecuta cuando se confirma el pago, antes de despachar.&lt;br&gt;• Probabilidad &amp;gt; umbral → ticket de alerta para soporte.&lt;br&gt;&lt;b style='color:#7d3c98'&gt;Monitoreo&lt;/b&gt;&lt;br&gt;• Recall y precisión reales (la etiqueta llega a los 30 días).&lt;br&gt;• Tasa de devolución general vs. objetivo del 12%.&lt;br&gt;• Drift: temporadas (Hot Sale, Navidad), nuevos productos, cambios en la política de devoluciones.&lt;br&gt;&lt;b style='color:#7d3c98'&gt;Mantenimiento&lt;/b&gt;&lt;br&gt;• Reentrenamiento mensual con las devoluciones nuevas." style="html=1;whiteSpace=wrap;rounded=1;arcSize=4;align=left;verticalAlign=top;spacingLeft=10;spacingRight=8;spacingTop=42.0;fillColor=#ffffff;strokeColor=#7d3c98;strokeWidth=2;fontSize=12;fontColor=#1b2733;" vertex="1" parent="1">
+          <mxGeometry x="60" y="636" width="432" height="324" as="geometry" />
+        </mxCell>
+        <mxCell id="c17" value="&lt;b&gt;6. PRODUCCIÓN Y MONITOREO&lt;/b&gt;" style="html=1;whiteSpace=wrap;rounded=0;align=left;verticalAlign=middle;spacingLeft=10;fillColor=#7d3c98;strokeColor=#7d3c98;fontColor=#ffffff;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="636" width="432" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c18" value="&lt;b&gt;&lt;/b&gt;" style="html=1;whiteSpace=wrap;edgeStyle=none;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#33475b;fontColor=#33475b;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#33475b;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="492" y="342" as="sourcePoint" />
+            <mxPoint x="564" y="342" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c19" value="&lt;b&gt;&lt;/b&gt;" style="html=1;whiteSpace=wrap;edgeStyle=none;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#33475b;fontColor=#33475b;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#33475b;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="996" y="342" as="sourcePoint" />
+            <mxPoint x="1068" y="342" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c20" value="&lt;b&gt;&lt;/b&gt;" style="html=1;whiteSpace=wrap;edgeStyle=none;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#33475b;fontColor=#33475b;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#33475b;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1410" y="504" as="sourcePoint" />
+            <mxPoint x="1410" y="636" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c21" value="&lt;b&gt;&lt;/b&gt;" style="html=1;whiteSpace=wrap;edgeStyle=none;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#33475b;fontColor=#33475b;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#33475b;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1068" y="798" as="sourcePoint" />
+            <mxPoint x="996" y="798" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c22" value="&lt;b&gt;&lt;/b&gt;" style="html=1;whiteSpace=wrap;edgeStyle=none;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#33475b;fontColor=#33475b;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#33475b;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="564" y="798" as="sourcePoint" />
+            <mxPoint x="492" y="798" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c23" value="&lt;b&gt;¿No llega a la meta? → volver a Preparación:&lt;br&gt;nuevas features, rebalancear clases&lt;/b&gt;" style="html=1;whiteSpace=wrap;edgeStyle=none;endArrow=block;endFill=1;strokeWidth=2.5;dashed=1;dashPattern=8 6;strokeColor=#c0392b;fontColor=#c0392b;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#c0392b;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="870" y="636" as="sourcePoint" />
+            <mxPoint x="1170" y="504" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c24" value="&lt;b&gt;Probar otro algoritmo / ajustar el umbral&lt;/b&gt;" style="html=1;whiteSpace=wrap;edgeStyle=none;endArrow=block;endFill=1;strokeWidth=2.5;dashed=1;dashPattern=8 6;strokeColor=#c0392b;fontColor=#c0392b;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#c0392b;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="930" y="960" as="sourcePoint" />
+            <mxPoint x="1284" y="960" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="930" y="996" />
+              <mxPoint x="1284" y="996" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c25" value="&lt;b&gt;Llegan devoluciones nuevas (etiquetas)&lt;br&gt;→ reentrenar con datos actualizados&lt;/b&gt;" style="html=1;whiteSpace=wrap;edgeStyle=none;endArrow=block;endFill=1;strokeWidth=2.5;dashed=1;dashPattern=8 6;strokeColor=#1e8449;fontColor=#1e8449;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#1e8449;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="390" y="636" as="sourcePoint" />
+            <mxPoint x="660" y="504" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c26" value="&lt;b&gt;Cambia el negocio&lt;br&gt;→ redefinir la pregunta&lt;/b&gt;" style="html=1;whiteSpace=wrap;edgeStyle=none;endArrow=block;endFill=1;strokeWidth=2.5;dashed=1;dashPattern=8 6;strokeColor=#1e8449;fontColor=#1e8449;fontSize=12;labelBackgroundColor=#ffffff;labelBorderColor=#1e8449;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="132" y="636" as="sourcePoint" />
+            <mxPoint x="132" y="504" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c27" value="" style="html=1;whiteSpace=wrap;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#33475b;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="1050" as="sourcePoint" />
+            <mxPoint x="120" y="1050" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c28" value="Flujo principal del proyecto" style="html=1;whiteSpace=wrap;text;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="126" y="1038" width="372" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="c29" value="" style="html=1;whiteSpace=wrap;endArrow=block;endFill=1;strokeWidth=2.5;dashed=1;dashPattern=8 6;strokeColor=#c0392b;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="516" y="1050" as="sourcePoint" />
+            <mxPoint x="576" y="1050" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c30" value="Iteración: el modelo no alcanza la meta en la evaluación" style="html=1;whiteSpace=wrap;text;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="582" y="1038" width="372" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="c31" value="" style="html=1;whiteSpace=wrap;endArrow=block;endFill=1;strokeWidth=2.5;dashed=1;dashPattern=8 6;strokeColor=#1e8449;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="972" y="1050" as="sourcePoint" />
+            <mxPoint x="1032" y="1050" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c32" value="Bucle de producción: el ciclo vuelve a empezar" style="html=1;whiteSpace=wrap;text;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1038" y="1038" width="372" height="24" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
