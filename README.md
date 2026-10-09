@@ -18,3 +18,4 @@ cursando, con su propio README explicando el ejercicio y cómo ejecutarlo.
 | 7 | TCL: transacciones seguras y ACID (BEGIN, COMMIT, ROLLBACK) sobre una tabla de productos | [`07-tcl-transacciones-productos/`](07-tcl-transacciones-productos/) |
 | 8 | Pre-entrega 2: adquisición y normalización con pandas (merge CSV + Excel, limpieza, export a Parquet) | [`08-adquisicion-normalizacion-pandas/`](08-adquisicion-normalizacion-pandas/) |
 | 9 | Ciclo de vida de Machine Learning: mapa del flujo para predecir devoluciones en e-commerce (diagrama con bucles de iteración) | [`09-ciclo-vida-ml-devoluciones/`](09-ciclo-vida-ml-devoluciones/) |
+| 10 | Aprendizaje supervisado vs. no supervisado: diagnóstico de 4 casos (clasificación, regresión, clustering) | [`10-supervisado-vs-no-supervisado/`](10-supervisado-vs-no-supervisado/) |
