@@ -20,3 +20,4 @@ cursando, con su propio README explicando el ejercicio y cómo ejecutarlo.
 | 9 | Ciclo de vida de Machine Learning: mapa del flujo para predecir devoluciones en e-commerce (diagrama con bucles de iteración) | [`09-ciclo-vida-ml-devoluciones/`](09-ciclo-vida-ml-devoluciones/) |
 | 10 | Aprendizaje supervisado vs. no supervisado: diagnóstico de 4 casos (clasificación, regresión, clustering) | [`10-supervisado-vs-no-supervisado/`](10-supervisado-vs-no-supervisado/) |
 | 11 | Pre-entrega 3: propuesta de proyecto de ML para predecir cancelaciones hoteleras (fuente de datos, diccionario, formato) | [`11-preentrega-propuesta-ml-hoteleria/`](11-preentrega-propuesta-ml-hoteleria/) |
+| 12 | Pre-entrega 4: extracción de datos vía API (Open-Meteo) con `.env`, manejo de errores y export a CSV | [`12-preentrega-extraccion-api-clima/`](12-preentrega-extraccion-api-clima/) |
