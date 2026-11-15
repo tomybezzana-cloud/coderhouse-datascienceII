@@ -27,3 +27,4 @@ cursando, con su propio README explicando el ejercicio y cómo ejecutarlo.
 | 16 | Ejecución eficiente de queries analíticas: consulta ingenua vs. optimizada (`SELECT *`, filtros sargables, EXPLAIN, impacto en RAM) | [`16-optimizacion-queries-analiticas/`](16-optimizacion-queries-analiticas/) |
 | 17 | Pre-entrega 6: análisis de datos meteorológicos (NOAA, 8 estaciones argentinas) con DuckDB consultando CSV directamente | [`17-preentrega-duckdb-clima/`](17-preentrega-duckdb-clima/) |
 | 18 | Funciones de ventana sobre pedidos: promedio por cliente (`PARTITION BY`), ventas acumuladas (`ORDER BY` + `ROWS`) y % de la categoría, sin `GROUP BY` | [`18-funciones-ventana-pedidos/`](18-funciones-ventana-pedidos/) |
+| 19 | Tabla maestra de features de clientes para ML: `LEFT JOIN` de 4 tablas, agregación condicionada (`SUM(CASE WHEN)`), `HAVING` y ranking por ciudad con `RANK() OVER` | [`19-features-ml-clientes/`](19-features-ml-clientes/) |
