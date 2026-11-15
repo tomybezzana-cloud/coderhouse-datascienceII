@@ -25,3 +25,4 @@ cursando, con su propio README explicando el ejercicio y cómo ejecutarlo.
 | 14 | Pre-entrega 5: pipeline ETL modular (`main.py` + `src/`) para reservas hoteleras: tipos optimizados, duplicados, nulos y export a Parquet | [`14-preentrega-pipeline-etl-hoteleria/`](14-preentrega-pipeline-etl-hoteleria/) |
 | 15 | SQL aplicado al análisis exploratorio: alias, filtrado y orden, `LIMIT`, `GROUP BY` + `HAVING` sobre `ventas_retail` | [`15-sql-analisis-exploratorio-retail/`](15-sql-analisis-exploratorio-retail/) |
 | 16 | Ejecución eficiente de queries analíticas: consulta ingenua vs. optimizada (`SELECT *`, filtros sargables, EXPLAIN, impacto en RAM) | [`16-optimizacion-queries-analiticas/`](16-optimizacion-queries-analiticas/) |
+| 17 | Pre-entrega 6: análisis de datos meteorológicos (NOAA, 8 estaciones argentinas) con DuckDB consultando CSV directamente | [`17-preentrega-duckdb-clima/`](17-preentrega-duckdb-clima/) |
