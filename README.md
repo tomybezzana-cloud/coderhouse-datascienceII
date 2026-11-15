@@ -22,3 +22,4 @@ cursando, con su propio README explicando el ejercicio y cómo ejecutarlo.
 | 11 | Pre-entrega 3: propuesta de proyecto de ML para predecir cancelaciones hoteleras (fuente de datos, diccionario, formato) | [`11-preentrega-propuesta-ml-hoteleria/`](11-preentrega-propuesta-ml-hoteleria/) |
 | 12 | Pre-entrega 4: extracción de datos vía API (Open-Meteo) con `.env`, manejo de errores y export a CSV | [`12-preentrega-extraccion-api-clima/`](12-preentrega-extraccion-api-clima/) |
 | 13 | Procesamiento vectorial para ML: usuarios como vectores, suma, escalado, producto punto y Bag of Words | [`13-representacion-vectorial-ml/`](13-representacion-vectorial-ml/) |
+| 14 | Pre-entrega 5: pipeline ETL modular (`main.py` + `src/`) para reservas hoteleras: tipos optimizados, duplicados, nulos y export a Parquet | [`14-preentrega-pipeline-etl-hoteleria/`](14-preentrega-pipeline-etl-hoteleria/) |
